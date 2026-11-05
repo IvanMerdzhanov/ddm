@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Every DDM club fixture, result, venue and kickoff time in one live calendar.">
+  <meta name="theme-color" content="#111111">
+  <title>DDM — Club Calendar</title>
+  <link rel="icon" type="image/png" href="pictures/logo.png">
+  <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+  <header class="calendar-nav">
+    <a class="calendar-logo" href="index.html" aria-label="DDM home"><img src="pictures/logo.png" alt="DDM"></a>
+    <span>Club Calendar / 2027</span>
+    <a class="back-link" href="index.html#holdings">Portfolio <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="calendar-hero">
+      <div>
+        <p class="eyebrow">Five clubs · one live schedule</p>
+        <h1>Every game.<br><em>One calendar.</em></h1>
+      </div>
+      <div class="calendar-intro">
+        <p>Fixtures, opponents, venues and results for AC Milan, the Yankees, Giants, Knicks and Rangers—with every start time translated for Bulgaria.</p>
+        <div class="refresh-block">
+          <button id="refresh-button" type="button"><span>Refresh scores</span><i aria-hidden="true">↻</i></button>
+          <p id="last-updated" aria-live="polite">Waiting for live data…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="calendar-toolbar" aria-label="Calendar filters">
+      <div class="calendar-filter-groups">
+        <div class="team-filters" id="team-filters">
+          <button class="active" type="button" data-team="all">All clubs</button>
+          <button type="button" data-team="milan"><i class="dot milan"></i>AC Milan</button>
+          <button type="button" data-team="yankees"><i class="dot yankees"></i>Yankees</button>
+          <button type="button" data-team="giants"><i class="dot giants"></i>Giants</button>
+          <button type="button" data-team="knicks"><i class="dot knicks"></i>Knicks</button>
+          <button type="button" data-team="rangers"><i class="dot rangers"></i>Rangers</button>
+        </div>
+        <button id="home-only-button" class="home-only-button" type="button" aria-pressed="false"><i aria-hidden="true">⌂</i> Home games only</button>
+      </div>
+      <div class="timezone-key"><span>VENUE</span><span>SOFIA / BULGARIA</span></div>
+    </section>
+
+    <section class="schedule" aria-busy="true">
+      <div id="calendar-status" class="calendar-status">Loading the club calendar…</div>
+      <div id="live-section" class="games-section" hidden>
+        <header><span>Live now</span><strong id="live-count">0</strong></header>
+        <div id="live-games" class="games-list"></div>
+      </div>
+      <div id="upcoming-section" class="games-section" hidden>
+        <header><span>Upcoming fixtures</span><strong id="upcoming-count">0</strong></header>
+        <div id="upcoming-games" class="games-list"></div>
+      </div>
+      <div id="results-section" class="games-section" hidden>
+        <header><span>Recent results</span><strong id="results-count">0</strong></header>
+        <div id="results-games" class="games-list"></div>
+      </div>
+    </section>
+
+    <section class="standings">
+      <header>
+        <p class="eyebrow">League tables</p>
+        <h2>See where<br><em>they stand.</em></h2>
+      </header>
+      <div class="standings-grid">
+        <a href="https://www.espn.com/soccer/standings/_/league/ita.1" target="_blank" rel="noopener"><span>01 / SERIE A</span><strong>AC Milan</strong><i>View table ↗</i></a>
+        <a href="https://www.espn.com/mlb/standings" target="_blank" rel="noopener"><span>02 / MLB</span><strong>Yankees</strong><i>View standings ↗</i></a>
+        <a href="https://www.espn.com/nfl/standings" target="_blank" rel="noopener"><span>03 / NFL</span><strong>Giants</strong><i>View standings ↗</i></a>
+        <a href="https://www.espn.com/nba/standings" target="_blank" rel="noopener"><span>04 / NBA</span><strong>Knicks</strong><i>View standings ↗</i></a>
+        <a href="https://www.espn.com/nhl/standings" target="_blank" rel="noopener"><span>05 / NHL</span><strong>Rangers</strong><i>View standings ↗</i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="pictures/logo.png" alt="DDM">
+    <p>Times update automatically for daylight saving.<br>Venue details are shown when supplied by the league feed.</p>
+    <small>Schedule data: TheSportsDB for AC Milan · ESPN for U.S. clubs · No paid API key required</small>
+  </footer>
+
+  <template id="game-template">
+    <article class="game-row">
+      <div class="game-date"><strong></strong><span></span></div>
+      <div class="team-chip"><i></i><span></span></div>
+      <div class="game-matchup"><p></p><h3></h3><a target="_blank" rel="noopener">Game details ↗</a></div>
+      <div class="game-place"><span>Venue</span><strong></strong><small></small></div>
+      <div class="game-time local"><span>Venue time</span><strong></strong><small></small></div>
+      <div class="game-time sofia"><span>Sofia time</span><strong></strong><small></small></div>
+      <div class="game-result"><span></span><strong></strong><small></small></div>
+    </article>
+  </template>
+
+  <script src="calendar.js"></script>
+</body>
+</html>
